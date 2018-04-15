@@ -13,7 +13,6 @@ class linkedListNode:
 node1 = linkedListNode("3") # "3"
 node2 = linkedListNode("7") # "7"
 node3 = linkedListNode("10") # "10"
-node4 = linkedListNode("77")
 
 node1.nextNode = node2 # node1 -> node2 , "3" -> "7"
 node2.nextNode = node3 # node2 -> node3 , "7" -> "10"
