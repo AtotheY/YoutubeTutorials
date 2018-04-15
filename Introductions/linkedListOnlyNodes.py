@@ -8,6 +8,32 @@ class linkedListNode:
         self.value = value
         self.nextNode = nextNode
 
+
+def insertNode(head, valuetoInsert):
+    currentNode = head
+    while currentNode is not None:
+        if currentNode.nextNode is None:
+            currentNode.nextNode = linkedListNode(valuetoInsert)
+            return head
+        currentNode = currentNode.nextNode
+
+# Delete node function
+def deleteNode(head, valueToDelete):
+    currentNode = head
+    previousNode = None
+    while currentNode is not None:
+        if currentNode.value == valueToDelete:
+            if previousNode is None:
+                newHead = currentNode.nextNode
+                currentNode.nextNode = None
+                return newHead
+            previousNode.nextNode = currentNode.nextNode
+            return head
+        previousNode = currentNode
+        currentNode = currentNode.nextNode
+    return head  # Value to delete was not found.
+
+
 # "3" -> "7" -> "10"
 
 node1 = linkedListNode("3") # "3"
@@ -32,28 +58,32 @@ print ''
 print "*********************************"
 
 
-def deleteNode(head, valueToDelete):
-    currentNode = head
-    previousNode = None
-    while currentNode is not None:
-        if currentNode.value == valueToDelete:
-            if previousNode is None:
-                newHead = currentNode.nextNode
-                currentNode.nextNode = None
-                return newHead
-            previousNode.nextNode = currentNode.nextNode
-            return head
-        previousNode = currentNode
-        currentNode = currentNode.nextNode
-    return head # Value to delete was not found.
 
 print "deleting the node '7'"
-newHead = deleteNode(head, "0")
+newHead = deleteNode(head, "10")
 
 
 print "*********************************"
 print "traversing the new linkedList with the node 7 removed"
 print "*********************************"
+
+
+currentNode = newHead
+while currentNode is not None:
+    print currentNode.value,
+    currentNode = currentNode.nextNode
+
+
+print ''
+print "*********************************"
+print "Inserting the node '99'"
+newHead = insertNode(newHead, "99")
+
+
+print "*********************************"
+print "traversing the new linkedList with the node 99 added"
+print "*********************************"
+
 
 currentNode = newHead
 while currentNode is not None:
